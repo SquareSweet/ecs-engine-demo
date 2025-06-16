@@ -32,3 +32,5 @@
 Сборка: `cmake --build build`
 
 Запуск: `./build/ecs_demo`
+
+Форматтер: `cmake --build build -t clang-format`

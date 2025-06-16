@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 file(GLOB_RECURSE SOURCES src/*.cpp)
+file(GLOB_RECURSE HPP_FILES CONFIGURE_DEPENDS include/*.hpp)
 
 # nlohmann/json
 FetchContent_Declare(
@@ -71,6 +72,12 @@ if (NOT OPENGL_FOUND)
 endif()
 
 add_executable(ecs_demo ${SOURCES})
+
+add_custom_target(clang-format
+    COMMAND clang-format -style=file -i ${SOURCES} ${HPP_FILES}
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMENT "Running clang-format on sources..."
+)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)
 target_link_libraries(${PROJECT_NAME} PRIVATE glm::glm)

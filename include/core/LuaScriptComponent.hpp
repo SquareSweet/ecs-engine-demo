@@ -5,5 +5,5 @@
 
 // Just stores path
 struct LuaScriptComponent : Component {
-    std::string scriptPath;
+  std::string scriptPath;
 };
