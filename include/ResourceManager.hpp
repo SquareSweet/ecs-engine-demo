@@ -1,8 +1,9 @@
 #pragma once
+
+#include "core/RenderComponent.hpp"
 #include <string>
 #include <memory>
 #include <unordered_map>
-#include "core/RenderComponent.hpp"
 
 // Using std::shared_ptr<Model>, so if several components refer the same model,
 // the resource wouldn't unload too soon.

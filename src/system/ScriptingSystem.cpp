@@ -149,7 +149,7 @@ int ScriptingSystem::l_rotate(lua_State* L) {
                     float ay = static_cast<float>(lua_tonumber(L, -2));
                     float az = static_cast<float>(lua_tonumber(L, -1));
                     float angle = static_cast<float>(lua_tonumber(L, 2));
-                    // For simplicity: if axis matches с X/Y/Z (1,0,0) or (0,1,0) or (0,0,1), just add angle to rotation.
+                    // For simplicity: if axis matches with X/Y/Z (1,0,0) or (0,1,0) or (0,0,1), just add angle to rotation.
                     if (fabs(ax - 1.0f) < 1e-3f && fabs(ay) < 1e-3f && fabs(az) < 1e-3f) {
                         tc->rotation[0] += angle;
                     } else if (fabs(ay - 1.0f) < 1e-3f && fabs(ax) < 1e-3f && fabs(az) < 1e-3f) {

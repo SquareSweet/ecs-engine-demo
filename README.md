@@ -16,12 +16,18 @@
 
 ## Сборка
 
-Для сборки требуется установленный девкит Lua.
+Для сборки требуется установленный девкит Lua и OpenGL.
 
 `sudo apt install liblua5.3-dev`
 
+Зависисоти glhw:
+
+`sudo apt install libwayland-dev libxkbcommon-dev xorg-dev`
+
 Конфигурация:
-`cmake -B build` (в процессе скачиваеся nlohmann/json)
+`cmake -B build`
+
+В процессе скачиваются необходимые библтотеки, может быть  долго.
 
 Сборка: `cmake --build build`
 

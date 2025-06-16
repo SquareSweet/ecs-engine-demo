@@ -6,23 +6,34 @@
 #include <vector>
 #include <array>
 #include <iostream>
+#include <glm/glm.hpp>
 
-// In real graphic engine would contain, UV, GPU buffers, etc.
 struct Model {
-    struct Vertex {
-        float x, y, z;
-    };
-    std::vector<Vertex> vertices;
-    std::vector<std::array<int, 3>> faces; // 0-based
-};
+    std::vector<float> positions;
+    std::vector<float> normals;
+    std::vector<float> texcoords;
+    std::vector<unsigned int> indices;
 
-// Shaders, textures, etc
-struct Material {
-    // Not used in demo
+    struct MaterialInfo {
+        std::string name;
+        std::string diffuse_texname;
+        std::string ambient_texname;
+        std::string specular_texname;
+        glm::vec3 diffuse_color = glm::vec3(1.0f);
+        glm::vec3 ambient_color = glm::vec3(1.0f);
+        glm::vec3 specular_color= glm::vec3(1.0f);
+        float shininess = 1.0f;
+        // GLuint diffuseTexID = 0; //
+    };
+    std::vector<MaterialInfo> materials;
+
+    unsigned int VAO = 0;
+    unsigned int VBO = 0;
+    unsigned int EBO = 0;
+    bool uploadedToGPU = false;
 };
 
 struct RenderComponent : Component {
     std::shared_ptr<Model> model;
-    std::shared_ptr<Material> material;
     std::string modelPath; // for serialization
 };
