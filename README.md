@@ -20,7 +20,7 @@
 
 `sudo apt install liblua5.3-dev`
 
-Зависисоти glhw:
+Зависисоти GLFW:
 
 `sudo apt install libwayland-dev libxkbcommon-dev xorg-dev`
 
